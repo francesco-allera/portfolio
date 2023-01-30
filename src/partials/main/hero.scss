@@ -1,0 +1,60 @@
+#hero {
+    min-height: calc(100vh - $header-height-start);
+    max-width: 1000px;
+    padding-top: 0;
+
+    h1 {
+        --font-size: 2rem;
+        font-size: var(--font-size);
+        line-height: 1.5;
+        height: calc(var(--font-size) * 1.5 * 5);
+
+        @include sm {
+            --font-size: 2.5rem;
+        }
+        @include md {
+            --font-size: 3rem;
+        }
+        @include lg {
+            --font-size: 3.25rem;
+        }
+        @include xl {
+            --font-size: 3.5rem;
+        }
+        @include xxl {
+            --font-size: 3.75rem;
+        }
+    }
+
+    > *.item-hide {
+        transform: translateX(50%);
+    }
+    > *:last-child {
+        align-self: center;
+    }
+
+    #my-name {
+        color: var(--color-secondary);
+        font-family: $dancing-script;
+        font-size: 1.5em;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    #intro {
+        color: var(--color-primary);
+        font-family: $inter;
+        line-height: 1.5;
+    }
+    #dot::after {
+        color: var(--color-neutral);
+        content: "";
+        border-left: 3px solid;
+        animation: 1s blink ease-in-out infinite;
+    }
+    @keyframes blink {
+        23% { opacity: 1; }
+        27% { opacity: 0; }
+        73% { opacity: 0; }
+        77% { opacity: 1; }
+    }
+}

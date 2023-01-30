@@ -1,0 +1,55 @@
+#projects {
+    .slider {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1vw;
+
+        &-left, &-right {
+            $measure: clamp(1rem, 2rem, 4rem);
+            width: $measure;
+            height: $measure;
+            text-align: center;
+            flex-shrink: 1;
+            cursor: pointer;
+
+            path {
+                @include transition;
+            }
+            &:hover path {
+                fill: var(--color-primary);
+            }
+            &:active path {
+                fill: var(--color-secondary);
+            }
+        }
+
+        &-carousel {
+            width: 100%;
+            max-width: 800px;
+            flex-shrink: 2;
+            position: relative;
+
+            &-el {
+                @include transition;
+                position: absolute;
+                opacity: 0;
+
+                img {
+                    width: 100%;
+                }
+                h3, p {
+                    margin-top: 1.5em;
+                }
+                h3 {
+                    text-transform: capitalize;
+                    text-align: center;
+                }
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

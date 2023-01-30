@@ -1,0 +1,41 @@
+#contact {
+    .form-mail {
+        padding-bottom: 1rem;
+        overflow: hidden;
+        row-gap: 1.5em;
+
+        div[class^="col-"] {
+            padding: 0 .5em;
+        }
+
+        input, textarea {
+            --input-background: var(--color-primary);
+            &.required {
+                --input-background: var(--color-secondary);
+            }
+
+            @include transition;
+            background: var(--color-neutral-background);
+            color: var(--color-neutral);
+            font-family: $inter;
+            box-shadow: 2px 2px var(--input-background);
+            font-size: 1rem;
+            width: 100%;
+            min-height: 2em;
+            line-height: 2em;
+            padding: .25em .75em;
+            display: block;
+            outline: none;
+            border: none;
+
+            &:focus {
+                box-shadow: 4px 4px 1px var(--input-background);
+            }
+            &::placeholder {
+                font-family: $inter;
+                color: var(--color-neutral);
+                text-transform: capitalize;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+#skills {
+    .skills-list {
+        margin: 1rem 0;
+        @include d-flex-c;
+        gap: 1rem 3rem;
+
+        svg {
+            fill: var(--color-neutral);
+            font-size: clamp(2rem, 4rem, 5rem);
+            width: 1em;
+            height: 1em;
+
+            path, circle {
+                @include transition;
+            }
+        }
+    }
+}

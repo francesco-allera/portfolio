@@ -1,0 +1,59 @@
+@mixin d-flex-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+$transition-duration: 0.25s;
+$transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+@mixin transition {
+    transition-property: all;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-timing-function;
+}
+
+
+$xs: 480px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+@mixin xs {
+    @media screen and (min-width: $xs) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media screen and (min-width: $sm) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media screen and (min-width: $md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media screen and (min-width: $lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media screen and (min-width: $xl) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media screen and (min-width: $xxl) {
+        @content;
+    }
+}

@@ -1,0 +1,65 @@
+$padding-x: 25px;
+$scrollbar-width: 12px;
+$header-height-start: 100px;
+$header-height-scroll: 70px;
+
+:root {
+    --main-padding-x: #{$padding-x};
+    @include xs {
+        --main-padding-x: #{$padding-x * 2};
+    }
+    @include md {
+        --main-padding-x: #{$padding-x * 3};
+    }
+    @include xl {
+        --main-padding-x: #{$padding-x * 4};
+    }
+
+    --header-padding-x: #{$padding-x};
+    @include md {
+        --header-padding: #{$padding-x * 1.5};
+    }
+    @include lg {
+        --header-padding: #{$padding-x * 2};
+    }
+    @include xl {
+        --header-padding: #{$padding-x * 3};
+    }
+    @include xxl {
+        --header-padding: #{$padding-x * 4};
+    }
+
+    --color-page-background-dark: #1c1c1c;
+    --color-page-background-light: #e4e4e4;
+    --color-header-background-dark: rgba(28, 28, 28, 0.85);
+    --color-header-background-light: rgba(228, 228, 228, 0.85);
+    --color-header-shadow-dark: #111;
+    --color-header-shadow-light: #ccc;
+    --color-neutral-background-dark: rgba(255, 255, 255, 0.25);
+    --color-neutral-background-light: rgba(0, 0, 0, 0.25);
+    --color-neutral-dark: #fff;
+    --color-neutral-light: #000;
+    --color-primary-dark: #00fdd8;
+    --color-primary-light: #02ddaa;
+    --color-secondary-dark: #fd2255;
+    --color-secondary-light: #ff0227;
+}
+
+body[data-theme="dark"] {
+    --color-page-background: var(--color-page-background-dark);
+    --color-neutral-background: var(--color-neutral-background-dark);
+    --color-neutral: var(--color-neutral-dark);
+    --color-primary: var(--color-primary-dark);
+    --color-secondary: var(--color-secondary-dark);
+    --color-header-background: var(--color-header-background-dark);
+    --color-header-shadow: var(--color-header-shadow-dark);
+}
+body[data-theme="light"] {
+    --color-page-background: var(--color-page-background-light);
+    --color-neutral-background: var(--color-neutral-background-light);
+    --color-neutral: var(--color-neutral-light);
+    --color-primary: var(--color-primary-light);
+    --color-secondary: var(--color-secondary-light);
+    --color-header-background: var(--color-header-background-light);
+    --color-header-shadow: var(--color-header-shadow-light);
+}

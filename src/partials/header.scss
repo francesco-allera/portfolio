@@ -1,0 +1,245 @@
+header {
+    @include transition;
+    background: var(--color-header-background);
+    height: $header-height-start;
+    padding: 0 var(--header-padding-x);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+
+    &.header-hide, &.header-show {
+        height: $header-height-scroll;
+    }
+    &.header-hide {
+        @media screen and (max-width: calc($md - 1px)){
+            transform: translateY($header-height-scroll * -1);
+        }
+        @include md {
+            box-shadow: 0 5px 10px 0 var(--color-header-shadow);
+        }
+    }
+    &.header-show {
+        transform: translateY(0);
+        box-shadow: 0 5px 10px 0 var(--color-header-shadow);
+    }
+
+    .logo {
+        position: relative;
+        z-index: 20;
+
+        &-wrapper {
+            $measure: 2rem;
+            width: $measure;
+            height: $measure;
+            position: relative;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+
+                &:first-child {
+                    top: calc(50% - 0.5px);
+                    left: calc(50% - 0.5px);
+                    z-index: 2;
+                }
+                &:last-child {
+                    top: calc(50% + 0.5px);
+                    left: calc(50% + 0.5px);
+                    z-index: 1;
+                }
+            }
+        }
+    }
+
+    .header-link {
+        color: var(--color-neutral) !important;
+        position: relative;
+
+        &::after {
+            @include transition;
+            color: var(--color-primary) !important;
+            content: "";
+            transition-property: width;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-bottom: 1px solid;
+        }
+        &.on-site::after, &:hover::after {
+            width: 100%;
+        }
+    }
+
+    .menu {
+        &-horizontal {
+            display: none;
+            @include md {
+                display: block;
+            }
+
+            &-list {
+                font-size: .8rem;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 1.5em;
+
+                .btn-resume {
+                    margin-left: .5em;
+                }
+            }
+        }
+
+        &-vertical {
+            display: block;
+            @include md {
+                display: none;
+            }
+
+            &-burger {
+                $measure: 2rem;
+                $height: 2px;
+                $distance: calc($measure / -2 + $height * 3);
+                $timing: .15s;
+                $t-f: ease-in-out;
+                width: $measure;
+                height: $measure;
+
+                position: relative;
+                z-index: 20;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                span, span::before, span::after {
+                    height: $height;
+                    border-radius: $height;
+                    background: var(--color-primary);
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                }
+                span {
+                    width: $measure;
+                    transition: transform $timing $t-f,
+                                width $timing $t-f $timing;
+                }
+                span::before {
+                    width: calc($measure * 1.2);
+                    top: $distance;
+                    transition: transform $timing $t-f,
+                                top $timing $t-f $timing;
+                }
+                span::after {
+                    width: calc($measure * .8);
+                    top: calc($distance * -1);
+                    transition: transform $timing $t-f,
+                                width $timing $t-f $timing,
+                                top $timing $t-f $timing;
+                }
+
+                &.open-burger span {
+                    width: calc($measure * 1.2);
+                    transform: rotate(45deg);
+                    transition: width $timing $t-f,
+                                transform $timing $t-f $timing;
+
+                    &::before {
+                        top: 0;
+                        transform: rotate(-90deg);
+                        transition: top $timing $t-f,
+                                    transform $timing $t-f $timing;
+                    }
+                    &::after {
+                        width: calc($measure * 1.2);
+                        top: 0;
+                        opacity: 0;
+                        transition: width $timing $t-f,
+                                    top $timing $t-f,
+                                    opacity 0s $t-f $timing;
+                    }
+                }
+            }
+
+            &-list {
+                @include transition;
+                background: var(--color-header-background);
+                visibility: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                width: 100%;
+                min-height: 100vh;
+                transform: translateX(100vw);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+
+                .btn-resume {
+                    margin: 1em 0;
+                }
+
+                &.showing-menu {
+                    visibility: visible;
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+
+    .theme-toggle {
+        $measure: 1.5em;
+        width: $measure;
+        height: $measure;
+        position: relative;
+        cursor: pointer;
+
+        .moon, .sun {
+            $transition-duration: 500ms;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            transition: opacity $transition-duration ease-in-out;
+
+            &.clicked {
+                animation: rotating $transition-duration ease-in-out forwards;
+            }
+            @keyframes rotating {
+                0% {
+                    transform: translate(-50%,-50%) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%,-50%) rotate(360deg);
+                }
+            }
+        }
+    }
+}
+
+body[data-theme="dark"] .sun {
+    opacity: 0 !important;
+}
+
+body[data-theme="light"] .moon {
+    opacity: 0 !important;
+}

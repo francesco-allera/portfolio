@@ -1,0 +1,68 @@
+main {
+    padding: $header-height-start var(--main-padding-x) 0;
+
+    section {
+        $section-padding-y: calc($header-height-scroll + .25rem);
+        --section-padding-x: 0;
+        padding: $section-padding-y var(--section-padding-x) calc($section-padding-y / 2);
+        @include md {
+            --section-padding-x: 25px;
+        }
+        @include xl {
+            --section-padding-x: 50px;
+        }
+
+        max-width: 1200px;
+        min-height: 100vh;
+        margin: 0 auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+
+        h2 {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            align-items: baseline;
+            text-transform: capitalize;
+
+            &::after {
+                background: var(--color-primary);
+                content: "";
+                display: block;
+                max-width: 100%;
+                height: 1px;
+                margin-left: 1em;
+                opacity: .5;
+                position: relative;
+                top: -.25em;
+                flex-grow: 0;
+                transition: flex-grow;
+                transition-duration: $transition-duration * 2;
+                transition-delay: calc(300ms + $transition-duration);
+            }
+            &.item-show::after {
+                flex-grow: 1;
+            }
+        }
+
+        &:nth-child(2n + 2) h2.item-hide {
+            transform: translateX(50%);
+        }
+        &:nth-child(2n + 3) h2 {
+            margin-left: auto;
+
+            &.item-hide {
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    @import "./main/hero.scss";
+    @import "./main/about.scss";
+    @import "./main/projects.scss";
+    @import "./main/skills.scss";
+    @import "./main/contact.scss";
+}

@@ -1,0 +1,110 @@
+.btn-resume {
+    &, &::before {
+        @include transition;
+    }
+
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: .25rem;
+    display: inline-block;
+    padding: .8em 2.25em;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-transform: capitalize;
+
+    &::before {
+        background: var(--color-primary);
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: -10%;
+        z-index: -1;
+        height: 102%;
+        width: 0;
+        transform: skewX(-20deg);
+    }
+
+    &:hover {
+        color: var(--color-page-background);
+
+        &::before {
+            width: 125%;
+        }
+    }
+}
+
+.btn-mail {
+    &, &::before, &::after {
+        @include transition;
+    }
+
+    $ref: .9rem;
+    $bord: calc($ref / 8);
+    $w-btn: calc($ref * 15);
+    $h-btn: calc($ref * 4.5);
+    $m1: calc($ref * -1 - $bord);
+    $m2: calc($bord * -1);
+    $m3: calc($m1 / 2 - 1px);
+    $m4: calc($ref / 2);
+
+    width: $w-btn;
+    height: $h-btn;
+    font-family: $roboto;
+    font-size: calc($ref * 1.25);
+    border: $bord solid;
+    color: var(--color-neutral);
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &::before, &::after {
+        background: var(--color-primary);
+        content: "";
+        position: absolute;
+        transform-origin: bottom right;
+    }
+    &::before {
+        width: $m4;
+        height: $h-btn;
+        bottom: $m3;
+        right: $m3;
+        transform: skewY(45deg);
+    }
+    &::after {
+        width: $w-btn;
+        height: $m4;
+        bottom: $m3;
+        right: $m3;
+        transform: skewX(45deg);
+    }
+
+    &:hover {
+        top: $m4;
+        left: $m4;
+
+        &:active {
+            color: var(--color-primary);
+        }
+
+        &::before, &::after {
+            bottom: $m2;
+            right: $m2;
+        }
+        &::before {
+            width: 0;
+        }
+        &::after {
+            height: 0;
+        }
+    }
+}

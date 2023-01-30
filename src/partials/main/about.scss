@@ -1,0 +1,58 @@
+#about {
+    .row {
+        row-gap: 3rem;
+    }
+
+    .photo {
+        @include lg {
+            text-align: end;
+        }
+        padding: 0 1.5rem;
+        text-align: center;
+
+        &-wrapper {
+            $border: 2px;
+            $positioning: calc($border * -1);
+            width: 100%;
+            max-width: 270px;
+            aspect-ratio: 1 / 1;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+
+            img, &::after {
+                @include transition;
+                position: absolute;
+                border-radius: .5rem;
+            }
+            img {
+                top: $positioning;
+                left: $positioning;
+                width: 100%;
+            }
+            &::after {
+                border: $border solid var(--color-primary);
+                top: $border;
+                left: $border;
+                content: "";
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                display: block;
+                z-index: -1;
+            }
+
+            &:hover {
+                img {
+                    top: 0;
+                    left: 0;
+                }
+                &::after {
+                    border-color: var(--color-secondary);
+                    background: var(--color-secondary);
+                    top: $positioning;
+                    left: $positioning;
+                }
+            }
+        }
+    }
+}
