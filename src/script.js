@@ -1,7 +1,7 @@
 /* Dynamically creation of elements in the horizontal and vertical menu */
 const sections = document.querySelectorAll('main > section');
 let text = `
-    <a href="./dist/example.pdf" class="btn-resume hide" target="_blank">
+    <a href="./dist/resume.pdf" class="btn-resume hide" target="_blank">
         resume
     </a>
     <div class="theme-toggle">
@@ -23,8 +23,7 @@ for (let i = sections.length - 1; i > 0; i--) {
     text = newText + text;
 }
 
-document.querySelector('.menu-horizontal-list').innerHTML = text;
-document.querySelector('.menu-vertical-list').innerHTML = text;
+document.querySelector('.menu-horizontal-list').innerHTML = document.querySelector('.menu-vertical-list').innerHTML = text;
 
 
 /* Toggle theme mode */
@@ -339,7 +338,8 @@ function validateName(str) {
     return regex.test(str);
 }
 function validateEmail(str) {
-    const regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    // const regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(str);
 }
 function validating(HTMLel, validation, event) {
