@@ -168,6 +168,15 @@ const projects = [
         urlSite: 'https://francesco-allera.github.io/vue-boolflix/'
     },
     {
+        title: 'tenzies',
+        img: 'tenzies.png',
+        description: 'Web app created to practice Hooks in React. The user rolls the dice until they are all the same (clicking on a die excludes it from the next roll).',
+        technologies: ['HTML', 'CSS', 'JS', 'React'],
+        viewport: 'all screens',
+        urlRepo: 'https://github.com/francesco-allera/react-tenzies',
+        urlSite: 'https://app-react-tenzies.netlify.app/'
+    },
+    {
         title: 'digital ocean replica',
         img: 'digital-ocean.png',
         description: 'Front-end replica of Digital Ocean landing page. Project created using Bootstrap\'s container->row->columns system, and developed from a mobile first perspective, so responsive on all devices.',
@@ -302,7 +311,6 @@ const observerSlider = new IntersectionObserver((sliders) => {
 });
 
 document.querySelectorAll('.slider').forEach(el => observerSlider.observe(el));
-
 
 
 /*  */
