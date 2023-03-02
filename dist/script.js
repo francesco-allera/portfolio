@@ -193,6 +193,14 @@ var projects = [{
   urlRepo: 'https://github.com/francesco-allera/vue-boolzapp',
   urlSite: 'https://francesco-allera.github.io/vue-boolzapp/'
 }, {
+  title: 'quizzical',
+  img: 'quizzical.png',
+  description: 'Web app created to practice the uses of API in React. There are 5 questions from many different categories, you got to answers to all the questions',
+  technologies: ['HTML', 'CSS', 'JS', 'React'],
+  viewport: 'all screens',
+  urlRepo: 'https://github.com/francesco-allera/react-quizzical-trivia',
+  urlSite: 'https://react-quizzical-trivia.netlify.app/'
+}, {
   title: 'mid term project',
   img: 'mid-term-proj.png',
   description: 'Mid-course project in which, through all the front-end technologies learned, a predefined graphical mockup was to be replicated.',
